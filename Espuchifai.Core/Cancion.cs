@@ -1,4 +1,4 @@
-namespace Espuchifai.Core.obj
+namespace Espuchifai.Core
 {
     public class Cancion
     {

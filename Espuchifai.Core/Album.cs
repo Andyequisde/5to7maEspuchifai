@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Espuchifai.Core
 {
     public class Album

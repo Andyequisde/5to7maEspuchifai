@@ -15,9 +15,9 @@
 
 **Nombre TP**: <!-- REEMPLAZA este comentario por el nombre del TP -->
 
-**Apellido y nombre Alumno**: <!-- REEMPLAZA este comentario por tu apellido y nombre -->
+**Apellido y nombre Alumno**: Revollo Andrés
 
-**Curso**: <!-- REEMPLAZA este comentario por tu curso -->
+**Curso**: 5to 7ma
 
 # Título del Proyecto
 
