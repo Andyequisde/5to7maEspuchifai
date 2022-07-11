@@ -2,9 +2,19 @@ namespace Espuchi.Core
 {
     public class Cliente
     {
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string email { get; set; }
-        public string contrasena { get; set; }
+        public ushort IdCliente { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Email { get; set; }
+        public string Contraseña { get; set; }
+        
+        public Cliente (ushort idCliente, string nombre, string apellido, string email, string contraseña)
+        {
+            IdCliente = idCliente;
+            Nombre = nombre;
+            Apellido = apellido;
+            Email = email;
+            Contraseña = contraseña;
+        }
     }
 }
