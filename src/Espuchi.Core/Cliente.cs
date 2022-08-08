@@ -6,7 +6,7 @@ namespace Espuchi.Core
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Email { get; set; }
-        public string Contraseña { get; set; }
+        public string Contrasena { get; set; }
         
         public Cliente (ushort idCliente, string nombre, string apellido, string email, string contraseña)
         {
@@ -14,7 +14,7 @@ namespace Espuchi.Core
             Nombre = nombre;
             Apellido = apellido;
             Email = email;
-            Contraseña = contraseña;
+            Contrasena = contraseña;
         }
     }
 }
