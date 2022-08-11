@@ -2,14 +2,14 @@ DROP DATABASE IF EXISTS Espuchifai;
 CREATE DATABASE Espuchifai;
 USE Espuchifai;
 	CREATE TABLE Banda (
-	idBanda SMALLINT,
+	idBanda SMALLINT AUTO_INCREMENT,
 	nombre VARCHAR(45) NOT NULL,
 	fundacion YEAR,
 	PRIMARY KEY (idBanda)
 );
 	CREATE TABLE Album (
-	idAlbum SMALLINT,
-	idBanda SMALLINT,
+	idAlbum SMALLINT AUTO_INCREMENT,
+	idBanda SMALLINT AUTO_INCREMENT,
 	nombre VARCHAR(45) NOT NULL,
 	lanzamiento DATE NOT NULL,
 	CantRepro INT NOT NULL
@@ -18,8 +18,8 @@ USE Espuchifai;
 	REFERENCES Banda (idBanda)
 );
 	CREATE TABLE Cancion (
-	idCancion SMALLINT,
-	idAlbum SMALLINT,
+	idCancion SMALLINT AUTO_INCREMENT,
+	idAlbum SMALLINT AUTO_INCREMENT,
 	nombre VARCHAR(45) NOT NULL,
 	nro_orden TINYINT UNSIGNED NOT NULL,
 	CantRepro INT NOT NULL
@@ -28,7 +28,7 @@ USE Espuchifai;
 	REFERENCES Album (idAlbum)
 );
 	CREATE TABLE Cliente (
-	idCliente SMALLINT,
+	idCliente SMALLINT AUTO_INCREMENT,
 	nombre VARCHAR(45) NOT NULL,
 	apellido VARCHAR(45) NOT NULL,
 	email VARCHAR(45) NOT NULL,
@@ -36,9 +36,9 @@ USE Espuchifai;
 	PRIMARY KEY (idCliente)
 );
 	CREATE TABLE Reproduccion (
-	idReproduccion SMALLINT,
-	idCliente SMALLINT,
-	idCancion SMALLINT,
+	idReproduccion SMALLINT AUTO_INCREMENT,
+	idCliente SMALLINT AUTO_INCREMENT,
+	idCancion SMALLINT AUTO_INCREMENT,
 	momento_reproduccion DATETIME NOT NULL,
 	PRIMARY KEY (idReproduccion),
 	CONSTRAINT fk_Reproduccion_Cliente FOREIGN KEY (idCliente)

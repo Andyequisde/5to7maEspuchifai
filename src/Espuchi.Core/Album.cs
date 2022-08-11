@@ -15,5 +15,9 @@ namespace Espuchi.Core
             Lanzamiento = lanzamiento;
             CantRepro = cantRepro;
         }
+        public void Canciones()
+        {
+            
+        }
     }
 }
