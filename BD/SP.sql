@@ -11,7 +11,7 @@ DELIMITER $$
 CREATE PROCEDURE altaBanda (out unIdBanda SMALLINT,unNombre VARCHAR(45),unaFundacion YEAR)
 BEGIN
     start transaction;
-        INSERT INTO Banda(nombre, fundacion)
+        INSERT INTO Banda(Nombre, Fundacion)
             VALUES (unNombre, unaFundacion);
         SET unIdBanda = last_insert_id();
     COMMIT;

@@ -10,7 +10,6 @@ public class Banda
 
     public Banda (string nombre, int fundacion)
     {
-
         Nombre = nombre;
         Fundacion = fundacion;
         Albunes = new List<Album>();
