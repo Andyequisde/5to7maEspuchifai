@@ -8,13 +8,13 @@ namespace Espuchi.Core
         public uint NroOrden { get; set; }
         public int CantRepro { get; set; }
 
-        public Cancion (ushort idCancion, string nombre, uint nroOrden, int cantRepro, Album album)
+        public Cancion ( string nombre, uint nroOrden, int cantRepro, Album album)
         {
-            IdCancion = idCancion;
             Nombre = nombre;
             NroOrden = nroOrden;
             CantRepro = cantRepro;
             Album = album;
         }
+
     }
 }

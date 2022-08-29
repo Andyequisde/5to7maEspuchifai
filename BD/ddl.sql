@@ -36,11 +36,10 @@ USE Espuchifai;
 	PRIMARY KEY (idCliente)
 );
 	CREATE TABLE Reproduccion (
-	idReproduccion SMALLINT AUTO_INCREMENT,
-	idCliente SMALLINT AUTO_INCREMENT,
-	idCancion SMALLINT AUTO_INCREMENT,
+	idCliente SMALLINT,
+	idCancion SMALLINT,
 	momento_reproduccion DATETIME NOT NULL,
-	PRIMARY KEY (idReproduccion),
+	PRIMARY KEY (idCliente, idCancion, momento_reproduccion),
 	CONSTRAINT fk_Reproduccion_Cliente FOREIGN KEY (idCliente)
 	REFERENCES Cliente (idCliente),
 	CONSTRAINT fk_Reproduccion_Cancion FOREIGN KEY (idCancion)

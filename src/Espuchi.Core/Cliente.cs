@@ -7,14 +7,20 @@ namespace Espuchi.Core
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Contrasena { get; set; }
-        
-        public Cliente (ushort idCliente, string nombre, string apellido, string email, string contraseña)
+        public List<Reproduccion> Reproducciones { get; set; }
+        public Cliente (string nombre, string apellido, string email, string contraseña)
         {
-            IdCliente = idCliente;
             Nombre = nombre;
             Apellido = apellido;
             Email = email;
             Contrasena = contraseña;
+            Reproducciones = new List<Reproduccion>();
+        }
+        //
+        public void EscucharCancion(Cancion cancion)
+        {
+            Reproduccion unaReproduccion = new Reproduccion(DateTime.Now, cancion, this);
+            Reproducciones.Add(unaReproduccion);
         }
     }
 }

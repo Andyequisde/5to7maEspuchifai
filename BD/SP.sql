@@ -8,38 +8,50 @@ DROP PROCEDURE IF EXISTS buscar;
 
 
 DELIMITER $$
-CREATE PROCEDURE altaBanda (unIdBanda SMALLINT,unNombre VARCHAR(45),unaFundacion YEAR)
+CREATE PROCEDURE altaBanda (out unIdBanda SMALLINT,unNombre VARCHAR(45),unaFundacion YEAR)
 BEGIN
-INSERT INTO Banda(idBanda, nombre, fundacion)
-	VALUES (unIdBanda, unNombre, unaFundacion);
+    start transaction;
+        INSERT INTO Banda(nombre, fundacion)
+            VALUES (unNombre, unaFundacion);
+        SET unIdBanda = last_insert_id();
+    COMMIT;
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE altaAlbun(unIdAlbun SMALLINT, unIdBanda SMALLINT, unNombre VARCHAR(45), unLanzamiento DATE, unCantRepro INT)
+CREATE PROCEDURE altaAlbun(out unIdAlbun SMALLINT, unIdBanda SMALLINT, unNombre VARCHAR(45), unLanzamiento DATE, unCantRepro INT)
 BEGIN
-INSERT INTO Albun(idAlbun, idBanda, nombre, lanzamiento, cantRepro)
-	VALUES (unIdAlbun, unIdBanda, unNombre, unLanzamiento, unCantRepro);
+    start transaction;
+        INSERT INTO Albun(idBanda, nombre, lanzamiento, cantRepro)
+            VALUES (unIdBanda, unNombre, unLanzamiento, unCantRepro);
+        SET unIdAlbun = last_insert_id();
+    COMMIT;
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE altaCancion(unIdCancion SMALLINT, unIdAlbun SMALLINT, unNombre VARCHAR(45), unNro_Orden TINYINT UNSIGNED, unCantRepro INT)
+CREATE PROCEDURE altaCancion(out unIdCancion SMALLINT, unIdAlbun SMALLINT, unNombre VARCHAR(45), unNro_Orden TINYINT UNSIGNED, unCantRepro INT)
 BEGIN
-INSERT INTO Cancion(idCancion, idAlbun, nombre, nro_Orden, cantRepro)
-	VALUES (unIdCancion, unIdAlbun, unNombre, unNro_Orden, unCantRepro);
+    start transaction;
+        INSERT INTO Cancion(idAlbun, nombre, nro_Orden, cantRepro)
+            VALUES (unIdAlbun, unNombre, unNro_Orden, unCantRepro);
+        SET unIdCancion = last_insert_id();
+    commit;
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE Reproducir(unIdReproduccion SMALLINT, unIdCliente SMALLINT, unIdCancion SMALLINT)
+CREATE PROCEDURE Reproducir(unIdCliente SMALLINT, unIdCancion SMALLINT, unMomento_reproduccion DATETIME)
 BEGIN
-INSERT INTO Reproduccion(idReproduccion, idCliente, idCancion)
-	VALUES (unIdReproduccion, unIdCliente, unIdCancion);
+INSERT INTO Reproduccion(idCliente, idCancion, momento_reproduccion)
+	VALUES (unIdCliente, unIdCancion, unMomento_reproduccion);
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE registarCliente(unIdCliente SMALLINT, unNombre VARCHAR(45), unApellido VARCHAR(45), unEmail VARCHAR(45), unaContrasena CHAR(65))
+CREATE PROCEDURE registarCliente(out unIdCliente SMALLINT, unNombre VARCHAR(45), unApellido VARCHAR(45), unEmail VARCHAR(45), unaContrasena CHAR(65))
 BEGIN
-INSERT INTO Cliente(idCliente, nombre, apellido, email, contrasena)
-    VALUES (unIdCliente, unNombre, unApellido, unEmail, SHAD2(unaContrasena, 666));
+    start transaction;
+        INSERT INTO Cliente(nombre, apellido, email, contrasena)
+            VALUES (unNombre, unApellido, unEmail, SHAD2(unaContrasena, 666));
+        SET unIdCliente = last_insert_id();
+    commit;
 END $$
 
 DELIMITER $$

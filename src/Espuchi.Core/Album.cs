@@ -9,9 +9,8 @@ namespace Espuchi.Core
         public DateOnly Lanzamiento { get; set; }
         public int CantRepro { get; set; }
         public List<Cancion> Canciones { get; set; }
-        public Album(ushort idAlbum ,string nombre, DateOnly lanzamiento, int cantRepro, Banda banda)
+        public Album(string nombre, DateOnly lanzamiento, int cantRepro, Banda banda)
         {
-            IdAlbum = idAlbum;
             Nombre = nombre;
             Lanzamiento = lanzamiento;
             CantRepro = cantRepro;

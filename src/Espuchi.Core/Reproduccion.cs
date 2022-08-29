@@ -4,10 +4,14 @@ namespace Espuchi.Core
     {
         public ushort IdReproduccion { get; set; }
         public DateTime MomentoRepro { get; set; }
-        public Reproduccion (ushort idReproduccion, DateTime momentoRepro)
+        public Cancion Cancion { get; set; }
+        public Cliente Cliente { get; set; }
+        public Reproduccion ( DateTime momentoRepro, Cancion cancion, Cliente cliente )
         {
-            IdReproduccion = idReproduccion;
             MomentoRepro = momentoRepro;
+            Cancion = cancion;
+            Cliente = cliente;
         }
+        
     }
 }
