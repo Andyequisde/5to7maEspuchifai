@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Espuchi.Core", "Espuchi.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Espuchi.AdoEt12", "Espuchi.AdoEt12\Espuchi.AdoEt12.csproj", "{A4D796D0-997D-415D-A398-580E6905DBD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Espuchi.Mvc", "Espuchi.Mvc\Espuchi.Mvc.csproj", "{5B04633A-7F5B-4D06-86A5-1820A0EE4DEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{A4D796D0-997D-415D-A398-580E6905DBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4D796D0-997D-415D-A398-580E6905DBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4D796D0-997D-415D-A398-580E6905DBD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B04633A-7F5B-4D06-86A5-1820A0EE4DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B04633A-7F5B-4D06-86A5-1820A0EE4DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B04633A-7F5B-4D06-86A5-1820A0EE4DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B04633A-7F5B-4D06-86A5-1820A0EE4DEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
