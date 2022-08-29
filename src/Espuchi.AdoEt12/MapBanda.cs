@@ -45,7 +45,6 @@ namespace Espuchi.AdoEt12
             var paramIdBanda = GetParametro("unIdBanda");
             banda.IdBanda = Convert.ToUInt16(paramIdBanda.Value);
         }
-
         
     }
 }
