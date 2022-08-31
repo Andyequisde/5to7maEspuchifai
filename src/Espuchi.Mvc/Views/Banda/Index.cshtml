@@ -1,0 +1,20 @@
+@using Espuchi.Core;
+@model IEnumerable<Banda>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body>
+    <table>
+        <tbody>
+            @foreach (Banda banda in Model)
+            {
+                <tr>
+                    <td>
+                        <a>@banda.Nombre</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

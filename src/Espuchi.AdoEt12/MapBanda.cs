@@ -46,5 +46,6 @@ namespace Espuchi.AdoEt12
             banda.IdBanda = Convert.ToUInt16(paramIdBanda.Value);
         }
         
+        public List<Banda> ObtenerBanda() => ColeccionDesdeTabla();
     }
 }

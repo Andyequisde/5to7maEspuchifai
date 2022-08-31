@@ -4,29 +4,25 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Espuchi.Core;
 using Microsoft.Extensions.Logging;
 
 namespace Espuchi.Mvc.Controllers
 {
-    [Route("[controller]")]
     public class BandaController : Controller
     {
-        private readonly ILogger<BandaController> _logger;
+        private readonly IAdo Ado ;
 
-        public BandaController(ILogger<BandaController> logger)
+        public BandaController(IAdo ado)
         {
-            _logger = logger;
+            Ado = ado;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var bandas = Ado.ObtenerBanda();
+            return View(bandas);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
     }
 }

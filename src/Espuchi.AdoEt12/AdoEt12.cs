@@ -1,15 +1,17 @@
-﻿using Espuchi.Core;
+﻿using System.Collections.Generic;
+using et12.edu.ar.AGBD.Ado;
+using Espuchi.Core;
 
 namespace Espuchi.AdoEt12;
 public class AdoEt12 : IAdo
 {
-    public void AltaBanda(Banda banda)
+    public AdoAGBD Ado { get; set; }
+    public MapBanda MapBanda { get; set; }
+    public AdoEt12(AdoAGBD ado)
     {
-        throw new NotImplementedException();
+        Ado = ado;
+        MapBanda = new MapBanda(ado);
     }
-
-    public List<Banda> ObtenerBanda()
-    {
-        throw new NotImplementedException();
-    }
+    public void AltaBanda(Banda banda) => MapBanda.AltaBanda(banda);
+    public List<Banda> ObtenerBanda() => MapBanda.ObtenerBanda();
 }
