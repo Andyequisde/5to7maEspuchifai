@@ -3,15 +3,15 @@ CREATE DATABASE Espuchifai;
 USE Espuchifai;
 	CREATE TABLE Banda (
 	idBanda SMALLINT AUTO_INCREMENT,
-	nombre VARCHAR(45) NOT NULL,
-	fundacion YEAR,
+	Nombre VARCHAR(45) NOT NULL,
+	Fundacion YEAR,
 	PRIMARY KEY (idBanda)
 );
 	CREATE TABLE Album (
 	idAlbum SMALLINT AUTO_INCREMENT,
 	idBanda SMALLINT AUTO_INCREMENT,
-	nombre VARCHAR(45) NOT NULL,
-	lanzamiento DATE NOT NULL,
+	Nombre VARCHAR(45) NOT NULL,
+	Lanzamiento DATE NOT NULL,
 	CantRepro INT NOT NULL
 	PRIMARY KEY (idAlbum),
 	CONSTRAINT fk_Album_Banda FOREIGN KEY (idBanda)
@@ -20,8 +20,8 @@ USE Espuchifai;
 	CREATE TABLE Cancion (
 	idCancion SMALLINT AUTO_INCREMENT,
 	idAlbum SMALLINT AUTO_INCREMENT,
-	nombre VARCHAR(45) NOT NULL,
-	nro_orden TINYINT UNSIGNED NOT NULL,
+	Nombre VARCHAR(45) NOT NULL,
+	NroOrden TINYINT UNSIGNED NOT NULL,
 	CantRepro INT NOT NULL
 	PRIMARY KEY (idCancion),
 	CONSTRAINT fk_Cancion_Album FOREIGN KEY (idAlbum)

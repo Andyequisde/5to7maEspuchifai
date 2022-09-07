@@ -1,7 +1,13 @@
+using Espuchi.AdoEt12;
+using et12.edu.ar.AGBD.Ado;
+using Espuchi.Core;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<AdoAGBD>(sAdoEt12 => FactoryAdoAGBD.GetAdoMySQL("appSettings.json", "test"));
+builder.Services.AddTransient<IAdo, AdoEt12>();
 
 var app = builder.Build();
 
