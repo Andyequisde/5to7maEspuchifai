@@ -1,5 +1,7 @@
+USE Espuchifai;
+
 DROP PROCEDURE IF EXISTS altaBanda;
-DROP PROCEDURE IF EXISTS altaAlbun;
+DROP PROCEDURE IF EXISTS altaAlbum;
 DROP PROCEDURE IF EXISTS altaCancion;
 DROP PROCEDURE IF EXISTS Reproducir;
 DROP PROCEDURE IF EXISTS registarCliente;
@@ -23,7 +25,7 @@ BEGIN
     start transaction;
         INSERT INTO Album(Banda, Nombre, Lanzamiento, CantRepro)
             VALUES (unBanda, unNombre, unLanzamiento, unCantRepro);
-        SET unIdAlbun = last_insert_id();
+        SET unIdAlbum = last_insert_id();
     COMMIT;
 END $$
 
@@ -56,9 +58,10 @@ END $$
 
 DELIMITER $$
 CREATE FUNCTION CantidadReproduccionesBanda(unIdBanda SMALLINT, fecha1 DATETIME, fecha2 DATETIME) RETURNS SMALLINT
+READS SQL DATA 
 BEGIN
 	DECLARE resultado SMALLINT;
-    
+
     SELECT SUM(IdReproduccion) INTO resultado
     FROM Reproduccion
     WHERE idBanda = unIdBanda
