@@ -51,7 +51,7 @@ CREATE PROCEDURE registarCliente(out unIdCliente SMALLINT, unNombre VARCHAR(45),
 BEGIN
     start transaction;
         INSERT INTO Cliente(Nombre, Apellido, Email, Contrasena)
-            VALUES (unNombre, unApellido, unEmail, SHAD2(unaContrasena, 666));
+            VALUES (unNombre, unApellido, unEmail, SHA2(unaContrasena, 256));
         SET unIdCliente = last_insert_id();
     commit;
 END $$

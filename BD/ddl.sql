@@ -4,25 +4,25 @@ USE Espuchifai;
 	CREATE TABLE Banda (
 	idBanda SMALLINT AUTO_INCREMENT,
 	Nombre VARCHAR(45) NOT NULL,
-	Fundacion YEAR,
+	Fundacion YEAR NOT NULL,
 	PRIMARY KEY (idBanda)
 );
 	CREATE TABLE Album (
 	idAlbum SMALLINT AUTO_INCREMENT,
-	idBanda SMALLINT AUTO_INCREMENT,
+	idBanda SMALLINT,
 	Nombre VARCHAR(45) NOT NULL,
 	Lanzamiento DATE NOT NULL,
-	CantRepro INT NOT NULL
+	CantRepro INT NOT NULL,
 	PRIMARY KEY (idAlbum),
 	CONSTRAINT fk_Album_Banda FOREIGN KEY (idBanda)
 	REFERENCES Banda (idBanda)
 );
 	CREATE TABLE Cancion (
 	idCancion SMALLINT AUTO_INCREMENT,
-	idAlbum SMALLINT AUTO_INCREMENT,
+	idAlbum SMALLINT ,
 	Nombre VARCHAR(45) NOT NULL,
 	NroOrden TINYINT UNSIGNED NOT NULL,
-	CantRepro INT NOT NULL
+	CantRepro INT NOT NULL,
 	PRIMARY KEY (idCancion),
 	CONSTRAINT fk_Cancion_Album FOREIGN KEY (idAlbum)
 	REFERENCES Album (idAlbum)
