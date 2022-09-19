@@ -7,11 +7,20 @@ public class AdoEt12 : IAdo
 {
     public AdoAGBD Ado { get; set; }
     public MapBanda MapBanda { get; set; }
+    public MapAlbum MapAlbum { get; set; }
     public AdoEt12(AdoAGBD ado)
     {
         Ado = ado;
         MapBanda = new MapBanda(ado);
+        MapAlbum = new MapAlbum(ado);
     }
     public void AltaBanda(Banda banda) => MapBanda.AltaBanda(banda);
     public List<Banda> ObtenerBanda() => MapBanda.ObtenerBanda();
+    public void AltaAlbum(Album album) => MapAlbum.AltaAlbum(album);
+    public List<Album> ObtenerAlbum() => MapAlbum.ObetenerAlbum();
+
+    public Banda BandaPorId(ushort idBanda)
+    {
+        
+    }
 }

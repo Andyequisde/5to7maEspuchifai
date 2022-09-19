@@ -3,16 +3,16 @@ using Espuchi.Core;
 
 namespace Espuchi.Mvc.Controllers
 {
-    public class BandaController : Controller
+    public class AlbumController : Controller
     {
         private readonly IAdo Ado ;
 
-        public BandaController(IAdo ado) => Ado = ado;
+        public AlbumController(IAdo ado) => Ado = ado;
 
         public IActionResult Index()
         {
-            var bandas = Ado.ObtenerBanda();
-            return View("Listado", bandas);
+            var albums = Ado.ObtenerAlbum();
+            return View("Listado", albums);
         }
     }
 }
