@@ -1,0 +1,20 @@
+@using Espuchi.Core;
+@model IEnumerable<Album>
+@{
+    ViewData["Title"] = "Album";
+}
+
+<body>
+    <table>
+        <tbody>
+            @foreach (Album album in Model)
+            {
+                <tr>
+                    <td>
+                        <p>@album.Nombre</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

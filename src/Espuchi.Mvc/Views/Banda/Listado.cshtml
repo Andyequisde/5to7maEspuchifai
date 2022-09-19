@@ -11,7 +11,9 @@
             {
                 <tr>
                     <td>
+                        <a asp-controller="Album" asp-action="listas" asp-route-id="@banda.IdBanda">@banda.Nombre</a>
                         <p>@banda.Nombre</p>
+                        <p>@banda.Fundacion</p>
                     </td>
                 </tr>
             }
