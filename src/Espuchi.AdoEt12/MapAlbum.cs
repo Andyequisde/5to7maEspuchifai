@@ -9,14 +9,17 @@ namespace Espuchi.AdoEt12
     {
         public MapAlbum(AdoAGBD ado) : base(ado)
             => Tabla = "Album";
+
         public override Album ObjetoDesdeFila(DataRow fila)
             => new Album(
                 nombre: fila["nombre"].ToString()!,
                 lanzamiento: Convert.ToDateTime(fila["lanzamiento"]),
-                cantRepro: Convert.ToInt32(fila["cantRepro"])
+                cantRepro: Convert.ToInt32(fila["cantRepro"]),
+                Banda: Convert.ToUInt16(fila["IdBanda"])
                 )
                 {
                     IdAlbum = Convert.ToUInt16(fila["idAlbum"])
+                    
                 };
         
         public void AltaAlbum(Album album)
@@ -50,8 +53,6 @@ namespace Espuchi.AdoEt12
             var paramIdAlbum = GetParametro("unIdAlbum");
             album.IdAlbum = Convert.ToUInt16(paramIdAlbum.Value);
         }
-
         public List<Album> ObetenerAlbum() => ColeccionDesdeTabla();
-        
     }
 }
