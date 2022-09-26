@@ -11,8 +11,8 @@ namespace Espuchi.Mvc.Controllers
 
         public IActionResult Index()
         {
-            var albums = Ado.ObtenerAlbum();
-            return View("Listado", albums);
+            var album = Ado.ObtenerAlbum();
+            return View("Listas", album);
         }
     }
 }
