@@ -14,8 +14,7 @@ namespace Espuchi.AdoEt12
             => new Album(
                 nombre: fila["nombre"].ToString()!,
                 lanzamiento: Convert.ToDateTime(fila["lanzamiento"]),
-                cantRepro: Convert.ToInt32(fila["cantRepro"]),
-                Banda: Convert.ToUInt16(fila["IdBanda"])
+                cantRepro: Convert.ToInt32(fila["cantRepro"])
                 )
                 {
                     IdAlbum = Convert.ToUInt16(fila["idAlbum"])
