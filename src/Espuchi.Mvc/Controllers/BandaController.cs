@@ -15,9 +15,17 @@ namespace Espuchi.Mvc.Controllers
             return View("Listado", bandas);
         }
 
+        [HttpGet]
         public IActionResult AltaBanda()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult AltaBanda(Banda banda)
+        {
+            Ado.AltaBanda(banda);
+            return View("Listado");
         }
     }
 }

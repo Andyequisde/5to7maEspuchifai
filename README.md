@@ -11,9 +11,9 @@
 
 ## Computación 2021
 
-**Asignatura**: 
+**Asignatura**: Programacion sobre Redes
 
-**Nombre TP**: <!-- REEMPLAZA este comentario por el nombre del TP -->
+**Nombre TP**: Espuchifai
 
 **Apellido y nombre Alumno**: Revollo Andrés
 
