@@ -5,7 +5,7 @@ namespace Espuchi.Mvc.Controllers
 {
     public class BandaController : Controller
     {
-        private readonly IAdo Ado ;
+        private readonly IAdo Ado;
 
         public BandaController(IAdo ado) => Ado = ado;
 
@@ -25,7 +25,7 @@ namespace Espuchi.Mvc.Controllers
         public IActionResult AltaBanda(Banda banda)
         {
             Ado.AltaBanda(banda);
-            return View("Listado");
+            return RedirectToAction(nameof(Index));
         }
     }
 }
