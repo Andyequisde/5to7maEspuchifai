@@ -1,23 +1,16 @@
 @model Espuchi.Core.Banda;
 @{
-    Layout = null;
+    ViewData["Title"] = "Home Page";
 }
-<html>
-<head>
-    <title> Alta Banda</title>
-</head>
-<body>
-    <form asp-action="AltaBanda" method="post">
-        <div asp-validation-summary="All"></div>
-        <div>
-            <label asp-for="Nombre">Nombre:</label>
-            <input asp-for="Nombre">
-        </div>
-        <div>
-            <label asp-for="Fundacion">Fundacion:</label>
-            <input asp-for="Fundacion">
-        </div>
-        <button type="submit" >Alta Banda</button>
-    </form>
-</body>
-</html>
+<form asp-action="AltaBanda" method="post">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="Nombre">Nombre:</label>
+        <input asp-for="Nombre">
+    </div>
+    <div>
+        <label asp-for="Fundacion">Fundacion:</label>
+        <input asp-for="Fundacion">
+    </div>
+    <button type="submit">Alta Banda</button>
+</form>
