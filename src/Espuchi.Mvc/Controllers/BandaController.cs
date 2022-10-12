@@ -27,5 +27,11 @@ namespace Espuchi.Mvc.Controllers
             Ado.AltaBanda(banda);
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Detalle(ushort idBanda)
+        {
+            var banda = Ado.ObtenerBanda(idBanda);
+            return View("Detalle", banda);
+        }
     }
 }

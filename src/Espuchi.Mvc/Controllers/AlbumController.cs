@@ -5,7 +5,7 @@ namespace Espuchi.Mvc.Controllers
 {
     public class AlbumController : Controller
     {
-        private readonly IAdo Ado ;
+        private readonly IAdo Ado;
 
         public AlbumController(IAdo ado) => Ado = ado;
 
@@ -14,5 +14,6 @@ namespace Espuchi.Mvc.Controllers
             var album = Ado.ObtenerAlbum();
             return View("Listas", album);
         }
+        //<a asp-controller="Album" asp-action="Index" asp-route-id="@banda.IdBanda">@banda.Nombre</a>
     }
 }

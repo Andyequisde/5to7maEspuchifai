@@ -21,7 +21,12 @@ namespace Espuchi.AdoEt12
         
         public void AltaBanda(Banda banda)
             => EjecutarComandoCon("altaBanda", ConfigurarAltaBanda, PostAltaBanda, banda);
-
+        
+        public void BandaPorId()
+        {
+          
+            
+        }
         private void ConfigurarAltaBanda(Banda banda)
         {
             SetComandoSP("altaBanda");
