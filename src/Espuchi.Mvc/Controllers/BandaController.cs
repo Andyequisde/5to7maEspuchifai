@@ -30,8 +30,8 @@ namespace Espuchi.Mvc.Controllers
 
         public IActionResult Detalle(ushort idBanda)
         {
-            var banda = Ado.ObtenerBanda(idBanda);
-            return View("Detalle", banda);
+            var banda = Ado.AltaBanda(idBanda);
+            return View(banda);
         }
     }
 }
