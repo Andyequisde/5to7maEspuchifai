@@ -23,7 +23,19 @@ namespace Espuchi.AdoEt12
             => EjecutarComandoCon("altaBanda", ConfigurarAltaBanda, PostAltaBanda, banda);
 
         public Banda BandaPorId(ushort IdBanda)
-        
+        {
+            ConfigurarBandaPorId(IdBanda);
+            return ElementoDesdeSP();
+        }
+
+        private void ConfigurarBandaPorId(ushort idBanda)
+        {
+            SetComandoSP("BandaPorId");
+
+            BP.CrearParametro("unIdBanda")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
+            .AgregarParametro();
+        }
 
         private void ConfigurarAltaBanda(Banda banda)
         {
