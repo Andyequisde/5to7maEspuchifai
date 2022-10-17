@@ -16,7 +16,7 @@ public class AdoEt12 : IAdo
     }
     public void AltaBanda(Banda banda) => MapBanda.AltaBanda(banda);
     public List<Banda> ObtenerBanda() => MapBanda.ObtenerBanda();
-    public Banda BandaPorId(ushort IdBanda) => MapBanda.BandaPorId();
+    public Banda BandaPorId(ushort IdBanda) => MapBanda.BandaPorId(IdBanda);
     public void AltaAlbum(Album album) => MapAlbum.AltaAlbum(album);
     public List<Album> ObtenerAlbum() => MapAlbum.ObetenerAlbum();
 }

@@ -15,17 +15,15 @@ namespace Espuchi.AdoEt12
                 nombre: fila["nombre"].ToString()!,
                 fundacion: Convert.ToInt32(fila["fundacion"])
                 )
-                {
-                    IdBanda = Convert.ToUInt16(fila["idBanda"])
-                };
-        
+            {
+                IdBanda = Convert.ToUInt16(fila["idBanda"])
+            };
+
         public void AltaBanda(Banda banda)
             => EjecutarComandoCon("altaBanda", ConfigurarAltaBanda, PostAltaBanda, banda);
-        
-        public Banda BandaPorId(ushort IdBanda)
-        {
 
-        }
+        public Banda BandaPorId(ushort IdBanda)
+        
 
         private void ConfigurarAltaBanda(Banda banda)
         {
@@ -50,7 +48,7 @@ namespace Espuchi.AdoEt12
             var paramIdBanda = GetParametro("unIdBanda");
             banda.IdBanda = Convert.ToUInt16(paramIdBanda.Value);
         }
-        
+
         public List<Banda> ObtenerBanda() => ColeccionDesdeTabla();
     }
 }

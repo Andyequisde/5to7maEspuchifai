@@ -78,3 +78,11 @@ BEGIN
     WHERE MATCH(nombre) 
     AGAINST(unbuscar IN NATURAL LANGUAGE MODE);
 END $$
+
+DELIMITER $$
+CREATE PROCEDURE BandaPorId (unIdBanda SMALLINT)
+BEGIN
+    SELECT *
+    FROM Banda
+    WHERE idBanda = unIdBanda
+END $$
