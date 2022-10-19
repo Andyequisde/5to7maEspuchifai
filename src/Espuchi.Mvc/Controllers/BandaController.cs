@@ -28,10 +28,10 @@ namespace Espuchi.Mvc.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Detalle(ushort idBanda)
+        public IActionResult Detalle(ushort IdBanda)
         {
-            var banda = Ado.BandaPorId(idBanda);
-            return View(banda);
+            var bandas = Ado.BandaPorId(IdBanda);
+            return View("Detalle", bandas);
         }
     }
 }

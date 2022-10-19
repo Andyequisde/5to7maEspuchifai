@@ -16,7 +16,7 @@ namespace Espuchi.AdoEt12
                 fundacion: Convert.ToInt32(fila["fundacion"])
                 )
             {
-                IdBanda = Convert.ToUInt16(fila["idBanda"])
+                IdBanda = Convert.ToUInt16(fila["IdBanda"])
             };
 
         public void AltaBanda(Banda banda)
@@ -28,12 +28,13 @@ namespace Espuchi.AdoEt12
             return ElementoDesdeSP();
         }
 
-        private void ConfigurarBandaPorId(ushort idBanda)
+        private void ConfigurarBandaPorId(ushort IdBanda)
         {
             SetComandoSP("BandaPorId");
 
             BP.CrearParametro("unIdBanda")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
+            .SetValor(IdBanda)
             .AgregarParametro();
         }
 

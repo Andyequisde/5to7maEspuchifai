@@ -7,6 +7,7 @@ DROP PROCEDURE IF EXISTS Reproducir;
 DROP PROCEDURE IF EXISTS registarCliente;
 DROP FUNCTION IF EXISTS CantidadReproduccionesBanda;
 DROP PROCEDURE IF EXISTS buscar;
+DROP PROCEDURE IF EXISTS BandaPorId;
 
 
 DELIMITER $$
@@ -84,5 +85,5 @@ CREATE PROCEDURE BandaPorId (unIdBanda SMALLINT)
 BEGIN
     SELECT *
     FROM Banda
-    WHERE idBanda = unIdBanda
+    WHERE idBanda = unIdBanda;
 END $$

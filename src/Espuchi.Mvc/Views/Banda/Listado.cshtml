@@ -11,7 +11,7 @@
             {
                 <tr>
                     <td>
-                        <a asp-controller="Banda" asp-action="Detalle">@banda.Nombre</a>
+                        <a asp-controller="Banda" asp-action="Detalle" asp-route-IdBanda="@banda.IdBanda">@banda.Nombre</a>
                     </td>
                 </tr>
             }
