@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<form asp-action="AltaBanda" method="post">
+<form asp-action="ModificarBanda" method="post">
     <div asp-validation-summary="All"></div>
     <div>
         <label asp-for="Nombre">Nombre: </label>
@@ -12,5 +12,5 @@
         <label asp-for="Fundacion">Fundacion: </label>
         <input asp-for="Fundacion">
     </div>
-    <button type="submit">Alta Banda</button>
+    <button type="submit">Modificar Banda</button>
 </form>

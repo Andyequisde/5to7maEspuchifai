@@ -13,6 +13,9 @@
                     <td>
                         <a asp-controller="Banda" asp-action="Detalle" asp-route-IdBanda="@banda.IdBanda">@banda.Nombre</a>
                     </td>
+                    <td>
+                        <a asp-controller="Banda" asp-action="ModificarBanda" asp-route-IdBanda="@banda.IdBanda">Modificar</a>
+                    </td>
                 </tr>
             }
         </tbody>
