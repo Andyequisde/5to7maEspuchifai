@@ -28,12 +28,6 @@ namespace Espuchi.AdoEt12
             return ElementoDesdeSP();
         }
 
-        public void ActualizarBanda()
-        {
-            
-        } 
-            
-
         private void ConfigurarBandaPorId(ushort IdBanda)
         {
             SetComandoSP("BandaPorId");
@@ -44,6 +38,26 @@ namespace Espuchi.AdoEt12
             .AgregarParametro();
         }
 
+        public Banda ActualizarBanda(Banda banda)
+        {
+            ConfigurarActualizarBanda(banda);
+            return ElementoDesdeSP();
+        }
+
+        private void ConfigurarActualizarBanda(Banda banda)
+        {
+            SetComandoSP("actualizarBanda");
+
+            BP.CrearParametro("unNombre")
+            .SetTipoVarchar(45)
+            .SetValor(banda.Nombre)
+            .AgregarParametro();
+
+            BP.CrearParametro("unaFundacion")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Year)
+            .SetValor(banda.Fundacion)
+            .AgregarParametro();
+        }
         private void ConfigurarAltaBanda(Banda banda)
         {
             SetComandoSP("altaBanda");

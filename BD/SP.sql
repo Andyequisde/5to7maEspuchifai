@@ -8,6 +8,7 @@ DROP PROCEDURE IF EXISTS registarCliente;
 DROP FUNCTION IF EXISTS CantidadReproduccionesBanda;
 DROP PROCEDURE IF EXISTS buscar;
 DROP PROCEDURE IF EXISTS BandaPorId;
+DROP PROCEDURE IF EXISTS ActualizarBanda;
 
 
 DELIMITER $$
@@ -21,30 +22,30 @@ BEGIN
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE altaAlbum(out unIdAlbum SMALLINT, unBanda SMALLINT, unNombre VARCHAR(45), unLanzamiento DATE, unCantRepro INT)
+CREATE PROCEDURE altaAlbum(out unIdAlbum SMALLINT, unIdBanda SMALLINT, unNombre VARCHAR(45), unLanzamiento DATE, unCantRepro INT)
 BEGIN
     start transaction;
-        INSERT INTO Album(Banda, Nombre, Lanzamiento, CantRepro)
-            VALUES (unBanda, unNombre, unLanzamiento, unCantRepro);
+        INSERT INTO Album(idBanda, Nombre, Lanzamiento, CantRepro)
+            VALUES (unIdBanda, unNombre, unLanzamiento, unCantRepro);
         SET unIdAlbum = last_insert_id();
     COMMIT;
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE altaCancion(out unIdCancion SMALLINT, unAlbum SMALLINT, unNombre VARCHAR(45), unNroOrden TINYINT UNSIGNED, unCantRepro INT)
+CREATE PROCEDURE altaCancion(out unIdCancion SMALLINT, unIdAlbum SMALLINT, unNombre VARCHAR(45), unNroOrden TINYINT UNSIGNED, unCantRepro INT)
 BEGIN
     start transaction;
-        INSERT INTO Cancion(Album, Nombre, NroOrden, CantRepro)
-            VALUES (unAlbun, unNombre, unNroOrden, unCantRepro);
+        INSERT INTO Cancion(idAlbum, Nombre, NroOrden, CantRepro)
+            VALUES (unIdAlbun, unNombre, unNroOrden, unCantRepro);
         SET unIdCancion = last_insert_id();
     commit;
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE Reproducir(unCliente SMALLINT, unCancion SMALLINT, unMomentoRepro DATETIME)
+CREATE PROCEDURE Reproducir(unIdCliente SMALLINT, unCancion SMALLINT, unMomentoRepro DATETIME)
 BEGIN
-INSERT INTO Reproduccion(Cliente, Cancion, MomentoRepro)
-	VALUES (unCliente, unCancion, unMomentoRepro);
+INSERT INTO Reproduccion(idCliente, Cancion, MomentoRepro)
+	VALUES (unIdCliente, unCancion, unMomentoRepro);
 END $$
 
 DELIMITER $$
@@ -87,3 +88,19 @@ BEGIN
     FROM Banda
     WHERE idBanda = unIdBanda;
 END $$
+
+DELIMITER $$
+CREATE PROCEDURE ActualizarBanda (unNombre VARCHAR(45),unaFundacion YEAR)
+BEGIN
+    SELECT *
+    FROM Banda
+    WHERE Nombre = unNombre
+    AND Fundacion = unaFundacion;
+END $$
+
+/* DELIMITER $$
+CREATE PROCEDURE ActualizarBanda (unNombre VARCHAR(45),unaFundacion YEAR)
+BEGIN
+INSERT INTO Banda(Nombre, Fundacion)
+    VALUES (unNombre, unaFundacion);
+END $$ */
