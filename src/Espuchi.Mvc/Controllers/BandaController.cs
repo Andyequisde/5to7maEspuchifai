@@ -33,5 +33,16 @@ namespace Espuchi.Mvc.Controllers
             var bandas = Ado.BandaPorId(IdBanda);
             return View("Detalle", bandas);
         }
+
+        public IActionResult ModificarBanda()
+        {
+            return View();
+        }
+
+        public IActionResult ModificarBanda(Banda banda)
+        {
+            Ado.ActualizarBanda(banda);
+            return RedirectToAction(nameof(ModificarBanda));
+        }
     }
 }

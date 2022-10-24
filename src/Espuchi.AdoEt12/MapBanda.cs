@@ -28,6 +28,12 @@ namespace Espuchi.AdoEt12
             return ElementoDesdeSP();
         }
 
+        public void ActualizarBanda()
+        {
+            
+        } 
+            
+
         private void ConfigurarBandaPorId(ushort IdBanda)
         {
             SetComandoSP("BandaPorId");
