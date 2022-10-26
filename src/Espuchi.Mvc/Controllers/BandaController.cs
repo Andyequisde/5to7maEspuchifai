@@ -50,5 +50,21 @@ namespace Espuchi.Mvc.Controllers
             Ado.ActualizarBanda(banda);
             return Redirect(nameof(Index));
         }
+        [HttpGet]
+        public IActionResult EliminarBanda(ushort IdBanda)
+        {
+            var banda = Ado.BandaPorId(IdBanda);
+            if (banda is null)
+            {
+                return NotFound();
+            }
+            return View(banda);
+        }
+        [HttpPost]
+        public IActionResult EliminarBanda(Banda banda)
+        {
+            Ado.EliminarBanda(banda);
+            return Redirect(nameof(Index));
+        }
     }
 }

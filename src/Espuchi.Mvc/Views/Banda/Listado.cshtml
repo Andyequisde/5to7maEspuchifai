@@ -11,10 +11,14 @@
             {
                 <tr>
                     <td>
-                        <a asp-controller="Banda" asp-action="Detalle" asp-route-IdBanda="@banda.IdBanda">@banda.Nombre</a>
+                        <a asp-controller="Banda" asp-action="Detalle" asp-route-IdBanda="@banda.IdBanda">@banda.Nombre </a>
                     </td>
                     <td>
-                        <a asp-controller="Banda" asp-action="ModificarBanda" asp-route-IdBanda="@banda.IdBanda">Modificar</a>
+                        <form asp-controller="Banda" asp-action="EliminarBanda" method="post">
+                            <input type="hidden" asp-for="@banda.IdBanda" />
+                            <button type="submit"class="btn btn-primary">Eliminar</button>
+                            <a asp-controller="Banda" asp-action="ModificarBanda" asp-route-IdBanda="@banda.IdBanda">Modificar</a>
+                        </form>
                     </td>
                 </tr>
             }

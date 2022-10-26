@@ -5,6 +5,7 @@ public interface IAdo
     void AltaAlbum(Album album);
     Banda BandaPorId(ushort IdBanda);
     void ActualizarBanda(Banda banda);
+    void EliminarBanda(Banda banda);
     List<Banda> ObtenerBanda();
     List<Album> ObtenerAlbum();
 }

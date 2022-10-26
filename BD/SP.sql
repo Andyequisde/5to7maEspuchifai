@@ -9,6 +9,7 @@ DROP FUNCTION IF EXISTS CantidadReproduccionesBanda;
 DROP PROCEDURE IF EXISTS buscar;
 DROP PROCEDURE IF EXISTS BandaPorId;
 DROP PROCEDURE IF EXISTS ActualizarBanda;
+DROP PROCEDURE IF EXISTS ElminarBanda;
 
 
 DELIMITER $$
@@ -95,6 +96,13 @@ BEGIN
     UPDATE Banda
     SEt Nombre = unNombre,
     Fundacion = unaFundacion
+    WHERE idBanda = unIdBanda;
+END $$
+
+DELIMITER $$
+CREATE PROCEDURE ElminarBanda (unIdBanda SMALLINT, unNombre VARCHAR(45), unaFundacion YEAR)
+BEGIN
+    DELETE FROM Banda
     WHERE idBanda = unIdBanda;
 END $$
 

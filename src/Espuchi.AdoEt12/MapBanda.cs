@@ -18,16 +18,33 @@ namespace Espuchi.AdoEt12
             {
                 IdBanda = Convert.ToUInt16(fila["IdBanda"])
             };
-
+        //-------------------------------------------------------------------------------------------
         public void AltaBanda(Banda banda)
             => EjecutarComandoCon("altaBanda", ConfigurarAltaBanda, PostAltaBanda, banda);
+        private void ConfigurarAltaBanda(Banda banda)
+        {
+            SetComandoSP("altaBanda");
 
+            BP.CrearParametroSalida("unIdBanda")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
+            .AgregarParametro();
+
+            BP.CrearParametro("unNombre")
+            .SetTipoVarchar(45)
+            .SetValor(banda.Nombre)
+            .AgregarParametro();
+
+            BP.CrearParametro("unaFundacion")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Year)
+            .SetValor(banda.Fundacion)
+            .AgregarParametro();
+        }
+        //-------------------------------------------------------------------------------------------
         public Banda BandaPorId(ushort IdBanda)
         {
             ConfigurarBandaPorId(IdBanda);
             return ElementoDesdeSP();
         }
-
         private void ConfigurarBandaPorId(ushort IdBanda)
         {
             SetComandoSP("BandaPorId");
@@ -37,10 +54,9 @@ namespace Espuchi.AdoEt12
             .SetValor(IdBanda)
             .AgregarParametro();
         }
-
+        //-------------------------------------------------------------------------------------------
         public void ActualizarBanda(Banda banda)
             => EjecutarComandoCon("ActualizarBanda", ConfigurarActualizarBanda, banda);
-
         private void ConfigurarActualizarBanda(Banda banda)
         {
             SetComandoSP("ActualizarBanda");
@@ -60,12 +76,17 @@ namespace Espuchi.AdoEt12
             .SetValor(banda.Fundacion)
             .AgregarParametro();
         }
-        private void ConfigurarAltaBanda(Banda banda)
-        {
-            SetComandoSP("altaBanda");
+        //-------------------------------------------------------------------------------------------
+        public void EliminarBanda(Banda banda)
+            => EjecutarComandoCon("EliminarBanda", ConfigurarEliminarBanda, banda);
 
-            BP.CrearParametroSalida("unIdBanda")
+        private void ConfigurarEliminarBanda(Banda banda)
+        {
+            SetComandoSP("ElminarBanda");
+
+            BP.CrearParametro("unIdBanda")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
+            .SetValor(banda.IdBanda)
             .AgregarParametro();
 
             BP.CrearParametro("unNombre")
@@ -78,6 +99,8 @@ namespace Espuchi.AdoEt12
             .SetValor(banda.Fundacion)
             .AgregarParametro();
         }
+        //-------------------------------------------------------------------------------------------
+
         private void PostAltaBanda(Banda banda)
         {
             var paramIdBanda = GetParametro("unIdBanda");
