@@ -5,23 +5,34 @@
 }
 
 <body>
-    <table>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col" >Acciones</th>
+                <th scope="col" colspan="2">cosassssss</th>
+            </tr>
+        </thead>
         <tbody>
-            @foreach (Banda banda in Model)
-            {
-                <tr>
-                    <td>
-                        <a asp-controller="Banda" asp-action="Detalle" asp-route-IdBanda="@banda.IdBanda">@banda.Nombre </a>
-                    </td>
-                    <td>
-                        <form asp-controller="Banda" asp-action="EliminarBanda" method="post">
-                            <input type="hidden" asp-for="@banda.IdBanda" />
-                            <button type="submit"class="btn btn-primary">Eliminar</button>
-                            <a asp-controller="Banda" asp-action="ModificarBanda" asp-route-IdBanda="@banda.IdBanda">Modificar</a>
-                        </form>
-                    </td>
-                </tr>
-            }
+        @foreach (Banda banda in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Banda" asp-action="Detalle" asp-route-IdBanda="@banda.IdBanda">@banda.Nombre </a>
+                </td>
+                <td>
+                    <form asp-controller="Banda" asp-action="EliminarBanda" method="post">
+                        <input type="hidden" asp-for="@banda.IdBanda" />
+                        <button type="submit"class="btn btn-primary">Eliminar</button>
+                        
+                    </form>
+                    
+                </td>
+                <td>
+                    <a asp-controller="Banda" asp-action="ModificarBanda" asp-route-IdBanda="@banda.IdBanda">Modificar</a>
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
 </body>
