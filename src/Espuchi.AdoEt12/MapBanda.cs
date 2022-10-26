@@ -38,15 +38,17 @@ namespace Espuchi.AdoEt12
             .AgregarParametro();
         }
 
-        public Banda ActualizarBanda(Banda banda)
-        {
-            ConfigurarActualizarBanda(banda);
-            return ElementoDesdeSP();
-        }
+        public void ActualizarBanda(Banda banda)
+            => EjecutarComandoCon("ActualizarBanda", ConfigurarActualizarBanda, banda);
 
         private void ConfigurarActualizarBanda(Banda banda)
         {
-            SetComandoSP("actualizarBanda");
+            SetComandoSP("ActualizarBanda");
+
+            BP.CrearParametro("unIdBanda")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
+            .SetValor(banda.IdBanda)
+            .AgregarParametro();
 
             BP.CrearParametro("unNombre")
             .SetTipoVarchar(45)

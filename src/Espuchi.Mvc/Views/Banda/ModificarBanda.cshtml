@@ -4,6 +4,7 @@
 }
 <form asp-action="ModificarBanda" method="post">
     <div asp-validation-summary="All"></div>
+    <div><input type="hidden" asp-for="IdBanda" /></div>
     <div>
         <label asp-for="Nombre">Nombre: </label>
         <input asp-for="Nombre">

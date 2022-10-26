@@ -90,17 +90,11 @@ BEGIN
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE ActualizarBanda (unNombre VARCHAR(45),unaFundacion YEAR)
+CREATE PROCEDURE ActualizarBanda (unIdBanda SMALLINT, unNombre VARCHAR(45), unaFundacion YEAR)
 BEGIN
-    SELECT *
-    FROM Banda
-    WHERE Nombre = unNombre
-    AND Fundacion = unaFundacion;
+    UPDATE Banda
+    SEt Nombre = unNombre,
+    Fundacion = unaFundacion
+    WHERE idBanda = unIdBanda;
 END $$
 
-/* DELIMITER $$
-CREATE PROCEDURE ActualizarBanda (unNombre VARCHAR(45),unaFundacion YEAR)
-BEGIN
-INSERT INTO Banda(Nombre, Fundacion)
-    VALUES (unNombre, unaFundacion);
-END $$ */
