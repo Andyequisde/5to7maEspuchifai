@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
-                <th scope="col" >Acciones</th>
-                <th scope="col" colspan="2">cosassssss</th>
+                <th scope="col" >Eliminar</th>
+                <th scope="col" colspan="2">Modificar</th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +24,7 @@
                     <form asp-controller="Banda" asp-action="EliminarBanda" method="post">
                         <input type="hidden" asp-for="@banda.IdBanda" />
                         <button type="submit"class="btn btn-primary">Eliminar</button>
-                        
                     </form>
-                    
                 </td>
                 <td>
                     <a asp-controller="Banda" asp-action="ModificarBanda" asp-route-IdBanda="@banda.IdBanda">Modificar</a>

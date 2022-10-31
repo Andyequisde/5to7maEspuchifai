@@ -22,9 +22,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Banda" asp-action="Index">Banda</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Banda" asp-action="AltaBanda">Alta Banda</a>
+@* ------------------------------------------------------------------------------------------------------------------------ *@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarAltaMenu" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Alta
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarAltaMenu">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Banda" asp-action="AltaBanda">Alta Banda</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Album" asp-action="AltaAlbum">Alta Album</a>
+                                </li>
+                            </ul>
                         </li>
+@* ------------------------------------------------------------------------------------------------------------------------ *@
                     </ul>
                 </div>
             </div>

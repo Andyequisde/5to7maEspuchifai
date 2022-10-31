@@ -12,7 +12,19 @@ namespace Espuchi.Mvc.Controllers
         public IActionResult Index()
         {
             var album = Ado.ObtenerAlbum();
-            return View("Listas", album);
+            return View("listas", album);
+        }
+        [HttpGet]
+        public IActionResult AltaAlbum()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult AltaAlbum(Album album)
+        {
+            Ado.AltaAlbum(album);
+            return RedirectToAction(nameof(Index));
         }
         //<a asp-controller="Album" asp-action="Index" asp-route-id="@banda.IdBanda">@banda.Nombre</a>
     }

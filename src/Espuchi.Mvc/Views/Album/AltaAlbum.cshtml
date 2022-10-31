@@ -1,0 +1,16 @@
+@model Espuchi.Core.Album;
+@{
+    ViewData["Title"] = "Home Page";
+}
+<form asp-action="AltaAlbum" method="post">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="Nombre">Nombre: </label>
+        <input asp-for="Nombre">
+    </div>
+    <div>
+        <label asp-for="Fundacion">Fundacion: </label>
+        <input asp-for="Fundacion">
+    </div>
+    <button type="submit" class="btn btn-primary">Alta Album</button>
+</form>
