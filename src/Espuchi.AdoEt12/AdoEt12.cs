@@ -23,5 +23,8 @@ public class AdoEt12 : IAdo
     //----------------------------------------------------------------------------------------------
     public void AltaAlbum(Album album) => MapAlbum.AltaAlbum(album);
     public List<Album> ObtenerAlbum() => MapAlbum.ObetenerAlbum();
+
+    public List<Album> FiltrarAlbum(ushort IdBanda)
+        => MapAlbum.FilasFiltradas("IdBanda", IdBanda);
     //----------------------------------------------------------------------------------------------
 }

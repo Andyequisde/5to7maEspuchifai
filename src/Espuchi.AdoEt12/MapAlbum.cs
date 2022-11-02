@@ -52,5 +52,14 @@ namespace Espuchi.AdoEt12
             album.IdAlbum = Convert.ToUInt16(paramIdAlbum.Value);
         }
         public List<Album> ObetenerAlbum() => ColeccionDesdeTabla();
+
+
+        public void FiltrarAlbum()
+        {
+            var BandasFiltradas = AdoEt12.FiltrarAlbum("IdBanda", 1);
+            var cantidadBanda = BandasFiltradas.Count;
+            Assert.Equal(2, cantidadBanda);
+            Assert.All(BandasFiltradas, pf => pf.Banda.IdBanda = 1);
+        }
     }
 }
