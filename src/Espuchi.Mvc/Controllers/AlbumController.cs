@@ -9,9 +9,9 @@ namespace Espuchi.Mvc.Controllers
 
         public AlbumController(IAdo ado) => Ado = ado;
 
-        public IActionResult Index()
+        public IActionResult Index(ushort IdBanda)
         {
-            var album = Ado.ObtenerAlbum();
+            var album = Ado.FiltrarAlbum(IdBanda);
             return View("listas", album);
         }
         [HttpGet]

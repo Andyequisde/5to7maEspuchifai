@@ -8,4 +8,6 @@ public interface IAdo
     void EliminarBanda(Banda banda);
     List<Banda> ObtenerBanda();
     List<Album> ObtenerAlbum();
+
+    List<Album> FiltrarAlbum(ushort IdBanda);
 }
