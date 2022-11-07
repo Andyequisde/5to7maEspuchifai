@@ -31,6 +31,7 @@ namespace Espuchi.Mvc.Controllers
         public IActionResult Detalle(ushort IdBanda)
         {
             var bandas = Ado.BandaPorId(IdBanda);
+            bandas.Albunes = Ado.FiltrarAlbum(IdBanda);
             return View("Detalle", bandas);
         }
 
