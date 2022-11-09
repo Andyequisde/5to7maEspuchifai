@@ -23,12 +23,13 @@ BEGIN
 END $$
 
 DELIMITER $$
-CREATE PROCEDURE altaAlbum(out unIdAlbum SMALLINT, unIdBanda SMALLINT, unNombre VARCHAR(45), unLanzamiento DATE, unCantRepro INT)
+CREATE PROCEDURE altaAlbum(out unIdAlbum SMALLINT,  out unIdBanda SMALLINT, unNombre VARCHAR(45), unLanzamiento DATE, unCantRepro INT)
 BEGIN
     start transaction;
         INSERT INTO Album(idBanda, Nombre, Lanzamiento, CantRepro)
             VALUES (unIdBanda, unNombre, unLanzamiento, unCantRepro);
         SET unIdAlbum = last_insert_id();
+        SET unIdBanda = last_insert_id();
     COMMIT;
 END $$
 

@@ -1,4 +1,3 @@
-
 @using Espuchi.Core;
 @model Banda
 @{
@@ -8,4 +7,26 @@
 <h2>@Model.Nombre</h2>
 <p>Fundada en: @Model.Fundacion</p>
 
-<h2>@</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nombre Album</th>
+            <th scope="col">Alta Album</th>
+        </tr>
+    </thead>
+    <tbody class="">
+        @foreach (var Album in Model.Albunes)
+        {
+            <tr>
+                <td scope="row">@Album.Nombre</td>
+                @* <th><a class="nav-link text-dark" asp-area="" asp-controller="Album" asp-action="AltaAlbum">Alta Album</a></th> *@
+                <td>
+                    <form asp-controller="Album" asp-action="AltaAlbum">
+                        <input type="hidden" asp-for="@Album.IdAlbum"/>
+                        <button type="submit" class="btn btn-primary">Alta Album</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

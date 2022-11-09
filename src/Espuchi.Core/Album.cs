@@ -8,6 +8,11 @@ public class Album
     public int CantRepro { get; set; }
     public List<Cancion> Canciones { get; set; }
     
+    public Album()
+    {
+        
+    }
+    
     public Album(string nombre, DateTime lanzamiento, int cantRepro)
     {
         Nombre = nombre;

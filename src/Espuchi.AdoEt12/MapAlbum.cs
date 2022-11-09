@@ -18,6 +18,7 @@ namespace Espuchi.AdoEt12
                 )
                 {
                     IdAlbum = Convert.ToUInt16(fila["idAlbum"])
+                    
                 };
         
         public void AltaAlbum(Album album)
