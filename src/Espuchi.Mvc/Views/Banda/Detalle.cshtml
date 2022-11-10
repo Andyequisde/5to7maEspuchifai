@@ -16,10 +16,10 @@
     </thead>
     <tbody class="">
         @* -------------------------Lista de Albunes dentro de una banda------------------------------------------ *@
-        @foreach (var Album in Model.Albunes)
+        @foreach (var album in Model.Albunes)
         {
             <tr>
-                <td scope="row">@Album.Nombre</td>
+                <td>@album.Nombre</td>
                 @* <td><a class="nav-link text-dark" asp-area="" asp-controller="Album" asp-action="AltaAlbum">Alta Album</a></td> *@
                 @* <td>
                     <a asp-controller="Album" asp-action="AltaAlbum">
@@ -28,7 +28,9 @@
                     </a>
                 </td> *@
                 <td>
-                    <a asp-controller="Album" asp-action="AltaAlbum" asp-route-IdBanda="@Album.IdAlbum"><button class="btn btn-primary">Alta Album </button></a>
+                    <a asp-controller="Album" asp-action="AltaAlbum" asp-route-IdAlbum="@album.IdAlbum">
+                        <button class="btn btn-primary">Alta Album </button>
+                    </a>
                 </td>
             </tr>
         }

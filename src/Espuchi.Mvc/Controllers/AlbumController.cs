@@ -14,6 +14,7 @@ namespace Espuchi.Mvc.Controllers
             var album = Ado.FiltrarAlbum(IdBanda);
             return View("listas", album);
         }
+
         [HttpGet]
         public IActionResult AltaAlbum()
         {
@@ -24,7 +25,7 @@ namespace Espuchi.Mvc.Controllers
         public IActionResult AltaAlbum(Album album)
         {
             Ado.AltaAlbum(album);
-            return RedirectToAction(nameof(AltaAlbum));
+            return RedirectToAction(nameof(Index));
         }
         //<a asp-controller="Album" asp-action="Index" asp-route-id="@banda.IdBanda">@banda.Nombre</a>
     }
