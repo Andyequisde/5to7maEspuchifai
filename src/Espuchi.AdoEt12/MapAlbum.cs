@@ -31,6 +31,10 @@ namespace Espuchi.AdoEt12
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
             .AgregarParametro();
 
+            BP.CrearParametro("unIdBanda")
+            .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Int16)
+            .AgregarParametro();
+
             BP.CrearParametro("unNombre")
             .SetTipoVarchar(45)
             .SetValor(album.Nombre)
@@ -41,7 +45,7 @@ namespace Espuchi.AdoEt12
             .SetValor(album.Lanzamiento)
             .AgregarParametro();
 
-            BP.CrearParametro("unaCantRepro")
+            BP.CrearParametro("unCantRepro")
             .SetTipo(MySql.Data.MySqlClient.MySqlDbType.Year)
             .SetValor(album.CantRepro)
             .AgregarParametro();
