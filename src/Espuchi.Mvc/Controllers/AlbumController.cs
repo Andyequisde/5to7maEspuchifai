@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Espuchi.Core;
+using Espuchi.Core.Mvc.ViewModels;
 
 namespace Espuchi.Mvc.Controllers
 {
@@ -13,19 +14,31 @@ namespace Espuchi.Mvc.Controllers
         {
             var album = Ado.FiltrarAlbum(IdBanda);
             return View("listas", album);
+
         }
 
         [HttpGet]
         public IActionResult AltaAlbum()
         {
-            return View();
+            var bandas = Ado.ObtenerBanda();
+            var vmAlbum = new VMAlbum(bandas);
+            return View("Upsert", vmAlbum);
         }
-        
+
         [HttpPost]
-        public IActionResult AltaAlbum(Album album)
+        public IActionResult Upsert(VMAlbum vmAlbum)
         {
-            Ado.AltaAlbum(album);
-            return RedirectToAction(nameof(Index));
+            if (!ModelState.IsValid)
+                return View("Upsert", vmAlbum);
+
+            if (vmAlbum.IdAlbum == 0)
+            {
+                var banda = Ado.BandaPorId(vmAlbum.IdBanda);
+                var album = new Album(vmAlbum.NombreAlbum!, vmAlbum.Lanzamiento, vmAlbum.CantRepro, banda);
+                album.Canciones = new List<Cancion>();
+                Ado.AltaAlbum(album);
+            }
+            return RedirectToAction("Index");
         }
         //<a asp-controller="Album" asp-action="Index" asp-route-id="@banda.IdBanda">@banda.Nombre</a>
     }

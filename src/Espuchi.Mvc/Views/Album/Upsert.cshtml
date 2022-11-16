@@ -1,0 +1,45 @@
+@using Espuchi.Core.Mvc.ViewModels;
+@model VMAlbum;
+@{
+    var texto = Model.IdAlbum == 0 ? "Alta Album" : "Modificar Album";
+    ViewData["Title"] = texto;
+}
+
+<form asp-controller="Album" asp-action="Upsert" method="post">
+    <div asp-validation-summary="All"></div>
+    <div><input type="hidden" asp-for="@Model.IdAlbum" /></div>
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <label asp-for="NombreAlbum" class="col-form-label">Nombre</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="NombreAlbum" class="form-control" />
+        </div>
+        <div class="col-auto">
+            <label asp-for="Lanzamiento" class="col-form-label">Lanzamiento</label>
+        </div>
+        <div class="col-auto">
+            <input type="date" asp-for="Lanzamiento" class="form-control" />
+        </div>
+    </div>
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <select asp-items="Model.BandaList" asp-for="IdBanda" class="form-select">
+                @if (Model.IdAlbum == 0)
+                {
+                    <option selected="selected" value="" disabled>Seleccione una Banda</option>
+                }
+            </select>
+        </div>
+        <div class="col-auto">
+            @if (Model.IdAlbum == 0)
+            {
+                <button type="submit" class="btn btn-primary">@texto</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-warning">@texto</button>
+            }
+        </div>
+    </div>
+</form>
