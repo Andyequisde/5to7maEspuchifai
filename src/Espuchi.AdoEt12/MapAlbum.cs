@@ -20,8 +20,8 @@ namespace Espuchi.AdoEt12
                     IdAlbum = Convert.ToUInt16(fila["idAlbum"])
                 };
         
-        public void AltaAlbum(Album album)
-            => EjecutarComandoCon("altaAlbum", ConfigurarAltaAlbum, PostAltaAlbum, album);
+        public async Task AltaAlbum(Album album)
+            => await EjecutarComandoAsync("altaAlbum", ConfigurarAltaAlbum, PostAltaAlbum, album);
 
         private void ConfigurarAltaAlbum(Album album)
         {
@@ -55,7 +55,7 @@ namespace Espuchi.AdoEt12
             var paramIdAlbum = GetParametro("unIdAlbum");
             album.IdAlbum = Convert.ToUInt16(paramIdAlbum.Value);
         }
-        public List<Album> ObetenerAlbum() => ColeccionDesdeTabla();
+        public async Task<List<Album>> ObetenerAlbum() => await ColeccionDesdeTablaAsync();
 
     }
 }

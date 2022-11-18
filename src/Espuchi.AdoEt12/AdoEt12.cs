@@ -15,16 +15,16 @@ public class AdoEt12 : IAdo
         MapAlbum = new MapAlbum(ado);
     }
     //---------------------------------------------------------------------------------------------
-    public void AltaBanda(Banda banda) => MapBanda.AltaBanda(banda);
-    public List<Banda> ObtenerBanda() => MapBanda.ObtenerBanda();
-    public Banda BandaPorId(ushort IdBanda) => MapBanda.BandaPorId(IdBanda);
-    public void ActualizarBanda(Banda banda) => MapBanda.ActualizarBanda(banda);
-    public void EliminarBanda(Banda banda) => MapBanda.EliminarBanda(banda);
+    public async Task AltaBanda(Banda banda) => await MapBanda.AltaBanda(banda);
+    public async Task<List<Banda>> ObtenerBanda() => await MapBanda.ObtenerBanda();
+    public async Task<Banda> BandaPorId(ushort IdBanda) => await MapBanda.BandaPorId(IdBanda);
+    public async Task ActualizarBanda(Banda banda) => await MapBanda.ActualizarBanda(banda);
+    public async Task EliminarBanda(Banda banda) => await MapBanda.EliminarBanda(banda);
     //----------------------------------------------------------------------------------------------
-    public void AltaAlbum(Album album) => MapAlbum.AltaAlbum(album);
-    public List<Album> ObtenerAlbum() => MapAlbum.ObetenerAlbum();
+    public async Task AltaAlbum(Album album) => await MapAlbum.AltaAlbum(album);
+    public async Task<List<Album>> ObtenerAlbum() => await MapAlbum.ObetenerAlbum();
 
-    public List<Album> FiltrarAlbum(ushort IdBanda)
-        => MapAlbum.FilasFiltradas("IdBanda", IdBanda);
+    public async Task<List<Album>> FiltrarAlbum(ushort IdBanda)
+        => await MapAlbum.FilasFiltradasAsync("IdBanda", IdBanda);
     //----------------------------------------------------------------------------------------------
 }

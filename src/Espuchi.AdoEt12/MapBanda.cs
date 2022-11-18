@@ -19,8 +19,8 @@ namespace Espuchi.AdoEt12
                 IdBanda = Convert.ToUInt16(fila["IdBanda"])
             };
         //-------------------------------------------------------------------------------------------
-        public void AltaBanda(Banda banda)
-            => EjecutarComandoCon("altaBanda", ConfigurarAltaBanda, PostAltaBanda, banda);
+        public async Task AltaBanda(Banda banda)
+            => await EjecutarComandoAsync("altaBanda", ConfigurarAltaBanda, PostAltaBanda, banda);
         private void ConfigurarAltaBanda(Banda banda)
         {
             SetComandoSP("altaBanda");
@@ -40,12 +40,12 @@ namespace Espuchi.AdoEt12
             .AgregarParametro();
         }
         //-------------------------------------------------------------------------------------------
-        public Banda BandaPorId(ushort IdBanda)
+        public async Task<Banda> BandaPorId(ushort IdBanda)
         {
             ConfigurarBandaPorId(IdBanda);
-            return ElementoDesdeSP();
+            return await ElementoDesdeSPAsync();
         }
-        private void ConfigurarBandaPorId(ushort IdBanda)
+        public void ConfigurarBandaPorId(ushort IdBanda)
         {
             SetComandoSP("BandaPorId");
 
@@ -55,9 +55,9 @@ namespace Espuchi.AdoEt12
             .AgregarParametro();
         }
         //-------------------------------------------------------------------------------------------
-        public void ActualizarBanda(Banda banda)
-            => EjecutarComandoCon("ActualizarBanda", ConfigurarActualizarBanda, banda);
-        private void ConfigurarActualizarBanda(Banda banda)
+        public async Task ActualizarBanda(Banda banda)
+            => await EjecutarComandoAsync("ActualizarBanda", ConfigurarActualizarBanda, banda);
+        public void ConfigurarActualizarBanda(Banda banda)
         {
             SetComandoSP("ActualizarBanda");
 
@@ -77,8 +77,8 @@ namespace Espuchi.AdoEt12
             .AgregarParametro();
         }
         //-------------------------------------------------------------------------------------------
-        public void EliminarBanda(Banda banda)
-            => EjecutarComandoCon("EliminarBanda", ConfigurarEliminarBanda, banda);
+        public async Task EliminarBanda(Banda banda)
+            => await EjecutarComandoAsync("EliminarBanda", ConfigurarEliminarBanda, banda);
 
         private void ConfigurarEliminarBanda(Banda banda)
         {
@@ -100,13 +100,12 @@ namespace Espuchi.AdoEt12
             .AgregarParametro();
         }
         //-------------------------------------------------------------------------------------------
-
         private void PostAltaBanda(Banda banda)
         {
             var paramIdBanda = GetParametro("unIdBanda");
             banda.IdBanda = Convert.ToUInt16(paramIdBanda.Value);
         }
 
-        public List<Banda> ObtenerBanda() => ColeccionDesdeTabla();
+        public async Task<List<Banda>> ObtenerBanda() =>  await ColeccionDesdeTablaAsync();
     }
 }

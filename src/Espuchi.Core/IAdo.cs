@@ -1,13 +1,12 @@
 namespace Espuchi.Core;
 public interface IAdo
 {
-    void AltaBanda(Banda banda);
-    void AltaAlbum(Album album);
-    Banda BandaPorId(ushort IdBanda);
-    void ActualizarBanda(Banda banda);
-    void EliminarBanda(Banda banda);
-    List<Banda> ObtenerBanda();
-    List<Album> ObtenerAlbum();
-
-    List<Album> FiltrarAlbum(ushort IdBanda);
+    Task AltaBanda(Banda banda);
+    Task ActualizarBanda(Banda banda);
+    Task<Banda> BandaPorId(ushort IdBanda);
+    Task EliminarBanda(Banda banda);
+    Task<List<Banda>> ObtenerBanda();
+    Task AltaAlbum(Album album);
+    Task<List<Album>> ObtenerAlbum();
+    Task<List<Album>> FiltrarAlbum(ushort IdBanda);
 }

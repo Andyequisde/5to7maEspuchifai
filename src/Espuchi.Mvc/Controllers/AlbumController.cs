@@ -10,33 +10,32 @@ namespace Espuchi.Mvc.Controllers
 
         public AlbumController(IAdo ado) => Ado = ado;
 
-        public IActionResult Index(ushort IdBanda)
+        public async Task<IActionResult> Index(ushort IdBanda)
         {
-            var album = Ado.FiltrarAlbum(IdBanda);
+            var album = await Ado.FiltrarAlbum(IdBanda);
             return View("listas", album);
-
         }
 
         [HttpGet]
-        public IActionResult AltaAlbum()
+        public async Task<IActionResult> AltaAlbum()
         {
-            var bandas = Ado.ObtenerBanda();
+            var bandas = await Ado.ObtenerBanda();
             var vmAlbum = new VMAlbum(bandas);
             return View("Upsert", vmAlbum);
         }
 
         [HttpPost]
-        public IActionResult Upsert(VMAlbum vmAlbum)
+        public async Task<IActionResult> Upsert(VMAlbum vmAlbum)
         {
             if (!ModelState.IsValid)
                 return View("Upsert", vmAlbum);
 
             if (vmAlbum.IdAlbum == 0)
             {
-                var banda = Ado.BandaPorId(vmAlbum.IdBanda);
+                var banda = await Ado.BandaPorId(vmAlbum.IdBanda);
                 var album = new Album(vmAlbum.NombreAlbum!, vmAlbum.Lanzamiento, vmAlbum.CantRepro, banda);
                 album.Canciones = new List<Cancion>();
-                Ado.AltaAlbum(album);
+                await Ado.AltaAlbum(album);
             }
             return RedirectToAction("Index");
         }

@@ -5,6 +5,7 @@
     <ProjectReference Include="..\Espuchi.AdoEt12\Espuchi.AdoEt12.csproj" />
   </ItemGroup>
 
+
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>

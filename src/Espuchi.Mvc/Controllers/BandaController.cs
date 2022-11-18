@@ -9,9 +9,9 @@ namespace Espuchi.Mvc.Controllers
 
         public BandaController(IAdo ado) => Ado = ado;
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var bandas = Ado.ObtenerBanda();
+            var bandas = await Ado.ObtenerBanda();
             return View("Listado", bandas);
         }
 
@@ -22,23 +22,23 @@ namespace Espuchi.Mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult AltaBanda(Banda banda)
+        public async Task<IActionResult> AltaBanda(Banda banda)
         {
-            Ado.AltaBanda(banda);
+            await Ado.AltaBanda(banda);
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Detalle(ushort IdBanda)
+        public async Task<IActionResult> Detalle(ushort IdBanda)
         {
-            var bandas = Ado.BandaPorId(IdBanda);
-            bandas.Albunes = Ado.FiltrarAlbum(IdBanda);
+            var bandas = await Ado.BandaPorId(IdBanda);
+            bandas.Albunes = await Ado.FiltrarAlbum(IdBanda);
             return View("Detalle", bandas);
         }
 
         [HttpGet]
-        public IActionResult ModificarBanda(ushort IdBanda)
+        public async Task<IActionResult> ModificarBanda(ushort IdBanda)
         {
-            var banda = Ado.BandaPorId(IdBanda);
+            var banda = await Ado.BandaPorId(IdBanda);
             if (banda is null)
             {
                 return NotFound();
@@ -46,15 +46,15 @@ namespace Espuchi.Mvc.Controllers
             return View("ModificarBanda", banda);
         }
         [HttpPost]
-        public IActionResult ModificarBanda(Banda banda)
+        public async Task<IActionResult> ModificarBanda(Banda banda)
         {
-            Ado.ActualizarBanda(banda);
+            await Ado.ActualizarBanda(banda);
             return Redirect(nameof(Index));
         }
         [HttpGet]
-        public IActionResult EliminarBanda(ushort IdBanda)
+        public async Task<IActionResult> EliminarBanda(ushort IdBanda)
         {
-            var banda = Ado.BandaPorId(IdBanda);
+            var banda = await Ado.BandaPorId(IdBanda);
             if (banda is null)
             {
                 return NotFound();
@@ -62,9 +62,9 @@ namespace Espuchi.Mvc.Controllers
             return View(banda);
         }
         [HttpPost]
-        public IActionResult EliminarBanda(Banda banda)
+        public async Task<IActionResult> EliminarBanda(Banda banda)
         {
-            Ado.EliminarBanda(banda);
+            await Ado.EliminarBanda(banda);
             return Redirect(nameof(Index));
         }
     }
