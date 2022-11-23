@@ -17,7 +17,7 @@ public class AdoEt12 : IAdo
     //---------------------------------------------------------------------------------------------
     public async Task AltaBanda(Banda banda) => await MapBanda.AltaBanda(banda);
     public async Task<List<Banda>> ObtenerBanda() => await MapBanda.ObtenerBanda();
-    public async Task<Banda> BandaPorId(ushort IdBanda) => await MapBanda.BandaPorId(IdBanda);
+    public async Task<Banda> BandaPorId(ushort IdBanda) => await MapBanda.BandaPorIdAsync(IdBanda);//  Task<Banda> es una operacion que cuando termina devuelve un valor(una Banda)
     public async Task ActualizarBanda(Banda banda) => await MapBanda.ActualizarBanda(banda);
     public async Task EliminarBanda(Banda banda) => await MapBanda.EliminarBanda(banda);
     //----------------------------------------------------------------------------------------------

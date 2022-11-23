@@ -40,7 +40,7 @@ namespace Espuchi.AdoEt12
             .AgregarParametro();
         }
         //-------------------------------------------------------------------------------------------
-        public async Task<Banda> BandaPorId(ushort IdBanda)
+        public async Task<Banda> BandaPorIdAsync(ushort IdBanda)
         {
             ConfigurarBandaPorId(IdBanda);
             return await ElementoDesdeSPAsync();
@@ -106,6 +106,6 @@ namespace Espuchi.AdoEt12
             banda.IdBanda = Convert.ToUInt16(paramIdBanda.Value);
         }
 
-        public async Task<List<Banda>> ObtenerBanda() =>  await ColeccionDesdeTablaAsync();
+        public async Task<List<Banda>> ObtenerBanda() => await ColeccionDesdeTablaAsync();
     }
 }
